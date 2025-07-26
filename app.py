@@ -8,7 +8,6 @@ from sklearn.ensemble import RandomForestRegressor
 @st.cache_data
 def load_data():
     df = pd.read_csv("dataset.csv")  # If uploaded with repo
-    df.to_csv("dataset.csv", index=False)
     return df
 
 # 🔹 Train model dynamically
@@ -18,7 +17,7 @@ def train_model(df):
     df.dropna(inplace=True)
     
     # Example categorical columns (adjust according to dataset)
-    categorical_cols = ['Airline', 'Source', 'Destination']
+    categorical_cols = ['Airline', 'Source', 'Destination','Stop']
     encoders = {}
     
     for col in categorical_cols:
@@ -52,7 +51,7 @@ airline = st.selectbox("Select Airline", airlines)
 source = st.selectbox("Select Source", sources)
 destination = st.selectbox("Select Destination", destinations)
 duration = st.slider("Duration (minutes)", 30, 1500, 180)
-stops = st.slider("Stops", 0, 5, 1)
+stops = st.slider("Stops", 0, 1)
 
 # Predict Button
 if st.button("Predict Price"):

@@ -7,7 +7,8 @@ from sklearn.ensemble import RandomForestRegressor
 # 🔹 Load a small sample dataset from GitHub (or local small_dataset.csv)
 @st.cache_data
 def load_data():
-    df = pd.read_csv("dataset.csv")  # If uploaded with repo
+    df = pd.read_csv("dataset.csv").head(300)
+    df.to_csv("small_dataset.csv", index=False)  
     return df
 
 # 🔹 Train model dynamically
